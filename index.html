@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NLP Practical Reference</title>
+  <title>Lab Exam Reference</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Arial, sans-serif; background: #f5f5f5; color: #222; padding: 24px 16px; }
@@ -24,287 +24,407 @@
 <body>
 
   <header>
-    <h1>NLP Practical Reference</h1>
-    <p>10 NLP practical codes — click Copy to copy any block to clipboard.</p>
+    <h1>Lab Exam Reference</h1>
+    <p>Code reference — click Copy to copy any block to clipboard.</p>
   </header>
 
   <main class="grid">
 
     <!-- Card 1 -->
     <div class="card">
-      <h2 class="card-title">1. Text Preprocessing Techniques</h2>
+      <h2 class="card-title">1. Design a static web page using HTML5 to display personal or course information</h2>
       <div class="code-wrapper">
-        <pre><code class="code-block">import nltk
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer, WordNetLemmatizer
-
-nltk.download('punkt_tab')
-nltk.download('stopwords')
-nltk.download('wordnet')
-
-text = "NLP helps computers understand language."
-
-# Tokenization
-tokens = word_tokenize(text)
-
-# Stop-word removal
-stop_words = set(stopwords.words('english'))
-filtered = [word for word in tokens if word.lower() not in stop_words]
-
-# Stemming
-stemmer = PorterStemmer()
-stemmed = [stemmer.stem(word) for word in filtered]
-
-# Lemmatization
-lemmatizer = WordNetLemmatizer()
-lemmatized = [lemmatizer.lemmatize(word) for word in filtered]
-
-print("Tokens:", tokens)
-print("Filtered:", filtered)
-print("Stemmed:", stemmed)
-print("Lemmatized:", lemmatized)</code></pre>
+        <pre><code class="code-block">&lt;!-- Design a static web page using HTML5 to
+     display personal or course information --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Course Information&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;BSc Computer Science (AI &amp; ML)&lt;/h1&gt;
+    &lt;h2&gt;Student Details&lt;/h2&gt;
+    &lt;p&gt;Name: Arun&lt;/p&gt;
+    &lt;p&gt;Department: Computer Science&lt;/p&gt;
+    &lt;h2&gt;Subjects&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Python&lt;/li&gt;
+        &lt;li&gt;Java&lt;/li&gt;
+        &lt;li&gt;Machine Learning&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
     </div>
 
     <!-- Card 2 -->
     <div class="card">
-      <h2 class="card-title">2. Word Frequency and Vocabulary Analysis</h2>
+      <h2 class="card-title">2. Create a responsive web page using HTML and CSS with proper layout (header, footer, navigation)</h2>
       <div class="code-wrapper">
-        <pre><code class="code-block">import nltk
-from nltk.tokenize import word_tokenize
-from nltk.probability import FreqDist
+        <pre><code class="code-block">&lt;!-- Create a responsive web page using HTML
+     and CSS with proper layout (header, footer, navigation) --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Responsive Webpage&lt;/title&gt;
+    &lt;style&gt;
+        body { margin: 0; font-family: Arial; }
+        header, footer {
+            background: black; color: white;
+            text-align: center; padding: 15px;
+        }
+        nav { background: gray; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 10px; text-decoration: none; }
+        .content { padding: 20px; }
+        @media(max-width:600px) {
+            nav a { display: block; margin: 5px; }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;&lt;h1&gt;My Website&lt;/h1&gt;&lt;/header&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;Home&lt;/a&gt;
+        &lt;a href="#"&gt;About&lt;/a&gt;
+        &lt;a href="#"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;div class="content"&gt;
+        &lt;h2&gt;Welcome&lt;/h2&gt;
+        &lt;p&gt;This is a responsive webpage.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;&lt;p&gt;Copyright 2026&lt;/p&gt;&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
 
-nltk.download('punkt')
-
-text = "Natural language processing helps computers understand language"
-tokens = word_tokenize(text)
-freq = FreqDist(tokens)
-
-print("Word Frequencies:", freq)
-print("Most Common Words:", freq.most_common(5))
-print("Vocabulary Size:", len(freq))</code></pre>
+    <!-- Card 3 -->
+    <div class="card">
+      <h2 class="card-title">3. Implement form validation using JavaScript for user registration (name, email, password)</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">&lt;!-- Implement form validation using JavaScript
+     for user registration (name, email, password) --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Form Validation&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Registration Form&lt;/h2&gt;
+    &lt;form onsubmit="return validate()"&gt;
+        Name: &lt;input type="text" id="name"&gt;&lt;br&gt;&lt;br&gt;
+        Email: &lt;input type="text" id="email"&gt;&lt;br&gt;&lt;br&gt;
+        Password: &lt;input type="password" id="password"&gt;&lt;br&gt;&lt;br&gt;
+        &lt;input type="submit"&gt;
+    &lt;/form&gt;
+    &lt;script&gt;
+        function validate() {
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var password = document.getElementById("password").value;
+            if (name == "") { alert("Enter Name"); return false; }
+            if (email == "") { alert("Enter Email"); return false; }
+            if (password.length &lt; 6) {
+                alert("Password must contain 6 characters");
+                return false;
+            }
+            alert("Registration Successful");
+            return true;
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
     </div>
 
     <!-- Card 4 -->
     <div class="card">
-      <h2 class="card-title">4. Parts Of Speech (POS) Tagging</h2>
+      <h2 class="card-title">4. Develop a dynamic web page using JavaScript to perform DOM manipulation (add, edit, delete elements)</h2>
       <div class="code-wrapper">
-        <pre><code class="code-block">import nltk
-from nltk.tokenize import word_tokenize
-from nltk import pos_tag
-
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger_eng')
-
-sentence = "NLP helps computers understand language"
-tokens = word_tokenize(sentence)
-tags = pos_tag(tokens)
-
-print("POS Tags:", tags)</code></pre>
+        <pre><code class="code-block">&lt;!-- Develop a dynamic web page using JavaScript
+     to perform DOM manipulation (add, edit, delete elements) --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h3&gt;Student List&lt;/h3&gt;
+    &lt;input id="item" placeholder="Student name"&gt;
+    &lt;button id="add"&gt;Add&lt;/button&gt;
+    &lt;button id="clear"&gt;Clear Text&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;script&gt;
+        const item = document.getElementById("item"),
+              list = document.getElementById("list");
+        function addItem() {
+            const v = item.value.trim();
+            if (!v) return;
+            const li = document.createElement("li");
+            const text = document.createElement("span");
+            const edit = document.createElement("button");
+            const del = document.createElement("button");
+            text.textContent = v + " ";
+            edit.textContent = "Edit";
+            del.textContent = "Delete";
+            edit.onclick = () =&gt; {
+                const n = prompt("Edit name:", text.textContent.trim());
+                if (n &amp;&amp; n.trim()) text.textContent = n.trim() + " ";
+            };
+            del.onclick = () =&gt; li.remove();
+            li.append(text, edit, document.createTextNode(" "), del);
+            list.appendChild(li);
+            item.value = ""; item.focus();
+        }
+        document.getElementById("add").onclick = addItem;
+        document.getElementById("clear").onclick = () =&gt; { item.value = ""; item.focus(); };
+        item.addEventListener("keydown", (e) =&gt; {
+            if (e.key === "Enter") { e.preventDefault(); addItem(); }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
     </div>
 
     <!-- Card 5 -->
     <div class="card">
-      <h2 class="card-title">5. Named Entity Recognition (NER)</h2>
+      <h2 class="card-title">5. Create a simple calculator using HTML, CSS, and JavaScript</h2>
       <div class="code-wrapper">
-        <pre><code class="code-block">import nltk
-from nltk import word_tokenize, pos_tag, ne_chunk
-from nltk.tree import Tree
-
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('maxent_ne_chunker_tab')
-nltk.download('words')
-
-text = "Google was founded by Larry Page in California."
-tokens = word_tokenize(text)
-pos_tags = pos_tag(tokens)
-ner_tree = ne_chunk(pos_tags)
-
-print("Named Entities:")
-for subtree in ner_tree:
-    if isinstance(subtree, Tree):
-        entity = " ".join([word for word, tag in subtree.leaves()])
-        label = subtree.label()
-        print(entity, "->", label)</code></pre>
+        <pre><code class="code-block">&lt;!-- Create a simple calculator using HTML, CSS, and JavaScript --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Simple Calculator&lt;/title&gt;
+    &lt;style&gt;
+        body { margin:0; font-family:Arial; background:#f2f2f2;
+               display:flex; justify-content:center; align-items:center; min-height:100vh; }
+        .calculator { background:#fff; padding:20px; border-radius:10px;
+                      box-shadow:0 4px 12px rgba(0,0,0,0.1); width:260px; }
+        h2 { text-align:center; margin-top:0; margin-bottom:15px; }
+        #result { width:100%; height:45px; font-size:20px; text-align:right;
+                  margin-bottom:12px; padding:5px 8px; box-sizing:border-box; }
+        .buttons { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+        button { height:45px; font-size:18px; border:none; border-radius:6px;
+                 cursor:pointer; background:#e6e6e6; }
+        button:hover { background:#d8d8d8; }
+        .operator { background:#ffd27f; } .operator:hover { background:#ffc45c; }
+        .equal { background:#7fd4a6; } .equal:hover { background:#67c593; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="calculator"&gt;
+        &lt;h2&gt;Calculator&lt;/h2&gt;
+        &lt;input type="text" id="result" readonly&gt;
+        &lt;div class="buttons"&gt;
+            &lt;button onclick="clearBox()"&gt;C&lt;/button&gt;
+            &lt;button onclick="deleteLast()"&gt;DEL&lt;/button&gt;
+            &lt;button onclick="display('%')" class="operator"&gt;%&lt;/button&gt;
+            &lt;button onclick="display('/')" class="operator"&gt;/&lt;/button&gt;
+            &lt;button onclick="display('7')"&gt;7&lt;/button&gt;
+            &lt;button onclick="display('8')"&gt;8&lt;/button&gt;
+            &lt;button onclick="display('9')"&gt;9&lt;/button&gt;
+            &lt;button onclick="display('*')" class="operator"&gt;*&lt;/button&gt;
+            &lt;button onclick="display('4')"&gt;4&lt;/button&gt;
+            &lt;button onclick="display('5')"&gt;5&lt;/button&gt;
+            &lt;button onclick="display('6')"&gt;6&lt;/button&gt;
+            &lt;button onclick="display('-')" class="operator"&gt;-&lt;/button&gt;
+            &lt;button onclick="display('1')"&gt;1&lt;/button&gt;
+            &lt;button onclick="display('2')"&gt;2&lt;/button&gt;
+            &lt;button onclick="display('3')"&gt;3&lt;/button&gt;
+            &lt;button onclick="display('+')" class="operator"&gt;+&lt;/button&gt;
+            &lt;button onclick="display('0')"&gt;0&lt;/button&gt;
+            &lt;button onclick="display('.')"&gt;.&lt;/button&gt;
+            &lt;button onclick="calculate()" class="equal"&gt;=&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        function display(v) { document.getElementById("result").value += v; }
+        function calculate() {
+            var e = document.getElementById("result").value;
+            if (e === "") return;
+            try { document.getElementById("result").value = eval(e); }
+            catch { document.getElementById("result").value = "Error"; }
+        }
+        function clearBox() { document.getElementById("result").value = ""; }
+        function deleteLast() {
+            var c = document.getElementById("result").value;
+            document.getElementById("result").value = c.slice(0, -1);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
     </div>
 
     <!-- Card 6 -->
     <div class="card">
-      <h2 class="card-title">6. Text Classification using Machine Learning</h2>
+      <h2 class="card-title">6. Design a simple webpage using HTML, CSS, and JavaScript that includes basic styling and a button click event</h2>
       <div class="code-wrapper">
-        <pre><code class="code-block">from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.naive_bayes import MultinomialNB
-
-texts = ["Win money now", "Limited offer", "Call me today", "Lets meet tomorrow"]
-labels = ["spam", "spam", "ham", "ham"]
-
-vectorizer = CountVectorizer()
-X = vectorizer.fit_transform(texts)
-
-model = MultinomialNB()
-model.fit(X, labels)
-
-sample = ["Free money offer"]
-sample_vector = vectorizer.transform(sample)
-prediction = model.predict(sample_vector)
-
-print("Message:", sample[0])
-print("Prediction:", prediction[0])</code></pre>
+        <pre><code class="code-block">&lt;!-- Design a simple webpage using HTML, CSS, and JavaScript
+     that includes basic styling and a button click event --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Button Event&lt;/title&gt;
+    &lt;style&gt;
+        body { text-align: center; margin-top: 100px; }
+        button { padding: 10px; background: blue; color: white; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Click the Button&lt;/h2&gt;
+    &lt;button onclick="show()"&gt;Click Here&lt;/button&gt;
+    &lt;script&gt;
+        function show() { alert("Button Clicked"); }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
     </div>
 
     <!-- Card 7 -->
     <div class="card">
-      <h2 class="card-title">7. Sentiment Analysis</h2>
+      <h2 class="card-title">7. Build a simple web application using Bootstrap for UI components and responsiveness</h2>
       <div class="code-wrapper">
-        <pre><code class="code-block">from textblob import TextBlob
+        <pre><code class="code-block">&lt;!-- Build a simple web application using Bootstrap
+     for UI components and responsiveness --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Bootstrap App&lt;/title&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container mt-5"&gt;
+        &lt;h1 class="text-primary"&gt;Bootstrap Web App&lt;/h1&gt;
+        &lt;button class="btn btn-success"&gt;Click Me&lt;/button&gt;
+        &lt;div class="alert alert-warning mt-3"&gt;
+            Welcome to Bootstrap
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
 
-reviews = ["I love this product", "This product is bad", "The product is okay"]
-
-for review in reviews:
-    blob = TextBlob(review)
-    polarity = blob.sentiment.polarity
-    if polarity > 0:
-        sentiment = "Positive"
-    elif polarity < 0:
-        sentiment = "Negative"
-    else:
-        sentiment = "Neutral"
-    print("Review:", review)
-    print("Sentiment:", sentiment)
-    print("Polarity:", polarity)
-    print()</code></pre>
+    <!-- Card 8 -->
+    <div class="card">
+      <h2 class="card-title">8. Develop a basic login system (frontend only) with HTML, CSS, and JavaScript</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">&lt;!-- Develop a basic login system (frontend only)
+     with HTML, CSS, and JavaScript --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Login System&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Login&lt;/h2&gt;
+    &lt;input type="text" id="user" placeholder="Username"&gt;&lt;br&gt;&lt;br&gt;
+    &lt;input type="password" id="pass" placeholder="Password"&gt;&lt;br&gt;&lt;br&gt;
+    &lt;button onclick="login()"&gt;Login&lt;/button&gt;
+    &lt;script&gt;
+        function login() {
+            var u = document.getElementById("user").value;
+            var p = document.getElementById("pass").value;
+            if (u == "admin" &amp;&amp; p == "1234") {
+                alert("Login Successful");
+            } else {
+                alert("Invalid Username or Password");
+            }
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
     </div>
 
     <!-- Card 9 -->
     <div class="card">
-      <h2 class="card-title">9.(i) Breadth First Search (BFS)</h2>
+      <h2 class="card-title">9. Develop a login form using HTML and CSS with basic input validation using JavaScript</h2>
       <div class="code-wrapper">
-        <pre><code class="code-block">from collections import deque
-
-graph = {
-    'A': ['B', 'C'],
-    'B': ['D'],
-    'C': ['E'],
-    'D': [],
-    'E': []
-}
-
-def bfs(start):
-    visited = []
-    queue = deque([start])
-    while queue:
-        node = queue.popleft()
-        if node not in visited:
-            print(node, end=" ")
-            visited.append(node)
-            queue.extend(graph[node])
-
-print("BFS Traversal:")
-bfs('A')</code></pre>
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-      </div>
-    </div>
-
-    <!-- Card 9b -->
-    <div class="card">
-      <h2 class="card-title">9.(ii) DFS for Problem Solving</h2>
-      <div class="code-wrapper">
-        <pre><code class="code-block">graph = {
-    'A': ['B', 'C'],
-    'B': ['D'],
-    'C': ['E'],
-    'D': [],
-    'E': []
-}
-
-visited = []
-
-def dfs(node):
-    if node not in visited:
-        print(node, end=" ")
-        visited.append(node)
-        for neighbour in graph[node]:
-            dfs(neighbour)
-
-print("DFS Traversal:")
-dfs('A')</code></pre>
+        <pre><code class="code-block">&lt;!-- Develop a login form using HTML and CSS
+     with basic input validation using JavaScript --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Login Form&lt;/title&gt;
+    &lt;style&gt;
+        body { text-align: center; margin-top: 100px; }
+        input { margin: 10px; padding: 10px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Login Form&lt;/h2&gt;
+    &lt;form onsubmit="return validate()"&gt;
+        &lt;input type="text" id="username" placeholder="Username"&gt;&lt;br&gt;
+        &lt;input type="password" id="password" placeholder="Password"&gt;&lt;br&gt;
+        &lt;input type="submit"&gt;
+    &lt;/form&gt;
+    &lt;script&gt;
+        function validate() {
+            var u = document.getElementById("username").value;
+            var p = document.getElementById("password").value;
+            if (u == "" || p == "") {
+                alert("All fields required");
+                return false;
+            }
+            alert("Login Successful");
+            return true;
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
     </div>
 
     <!-- Card 10 -->
     <div class="card">
-      <h2 class="card-title">10.(i) Best-First Search (Heuristic-Based Search)</h2>
+      <h2 class="card-title">10. Develop a simple full-stack CRUD application to perform Create, Read, Update, and Delete operations</h2>
       <div class="code-wrapper">
-        <pre><code class="code-block">import heapq
-
-heuristic = {'A': 5, 'B': 4, 'C': 2, 'D': 3, 'E': 1, 'F': 0}
-graph = {'A': ['B', 'C'], 'B': ['D', 'E'], 'C': ['F'], 'D': [], 'E': ['F'], 'F': []}
-
-def best_first_search(start, goal):
-    visited = set()
-    queue = []
-    path = []
-    heapq.heappush(queue, (heuristic[start], start))
-    while queue:
-        h_val, node = heapq.heappop(queue)
-        if node not in visited:
-            path.append(node)
-            visited.add(node)
-            if node == goal:
-                break
-            for neighbor in graph[node]:
-                if neighbor not in visited:
-                    heapq.heappush(queue, (heuristic[neighbor], neighbor))
-    return path
-
-print("Best-First Search Path:")
-print(best_first_search('A', 'F'))</code></pre>
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-      </div>
-    </div>
-
-    <!-- Card 11 -->
-    <div class="card">
-      <h2 class="card-title">10.(ii) A* Search Algorithm</h2>
-      <div class="code-wrapper">
-        <pre><code class="code-block">import heapq
-
-heuristic = {'A': 5, 'B': 4, 'C': 2, 'D': 3, 'E': 1, 'F': 0}
-graph = {'A': ['B', 'C'], 'B': ['D', 'E'], 'C': ['F'], 'D': [], 'E': ['F'], 'F': []}
-
-def best_first_search(start, goal):
-    visited = set()
-    queue = []
-    path = []
-    heapq.heappush(queue, (heuristic[start], start))
-    while queue:
-        h, node = heapq.heappop(queue)
-        if node not in visited:
-            path.append(node)
-            visited.add(node)
-            if node == goal:
-                break
-            for neighbor in graph[node]:
-                if neighbor not in visited:
-                    heapq.heappush(queue, (heuristic[neighbor], neighbor))
-    return path
-
-print("Best-First Search Path:")
-print(best_first_search('A', 'F'))</code></pre>
+        <pre><code class="code-block">&lt;!-- Develop a simple full-stack CRUD application
+     to perform Create, Read, Update, and Delete operations --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CRUD Application&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;CRUD Application&lt;/h2&gt;
+    &lt;input type="text" id="name" placeholder="Enter Name"&gt;
+    &lt;button onclick="addData()"&gt;Add&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;script&gt;
+        var data = [];
+        function showData() {
+            document.getElementById("list").innerHTML = "";
+            for (var i = 0; i &lt; data.length; i++) {
+                document.getElementById("list").innerHTML +=
+                    "&lt;li&gt;" + data[i] +
+                    " &lt;button onclick='editData(" + i + ")'&gt;Edit&lt;/button&gt; " +
+                    " &lt;button onclick='deleteData(" + i + ")'&gt;Delete&lt;/button&gt;&lt;/li&gt;";
+            }
+        }
+        function addData() {
+            var name = document.getElementById("name").value;
+            data.push(name); showData();
+        }
+        function editData(i) {
+            var value = prompt("Edit Name", data[i]);
+            data[i] = value; showData();
+        }
+        function deleteData(i) { data.splice(i, 1); showData(); }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
     </div>
@@ -323,9 +443,7 @@ print(best_first_search('A', 'F'))</code></pre>
           btn.textContent = 'Copy';
           btn.classList.remove('copied');
         }, 2000);
-      } catch (err) {
-        // Clipboard API unavailable — fail silently
-      }
+      } catch (err) {}
     }
   </script>
 
