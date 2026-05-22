@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NLP Practical Reference</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f5f5f5; color: #222; padding: 24px 16px; }
+    header { margin-bottom: 28px; padding-bottom: 12px; border-bottom: 1px solid #ccc; }
+    header h1 { font-size: 22px; font-weight: bold; color: #111; }
+    header p { font-size: 13px; color: #666; margin-top: 4px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+    .card { background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 16px; }
+    .card-title { font-size: 15px; font-weight: bold; margin-bottom: 10px; color: #111; }
+    .code-wrapper { position: relative; }
+    pre { background: #f0f0f0; border: 1px solid #ddd; border-radius: 3px; padding: 12px; overflow-x: auto; font-size: 13px; line-height: 1.5; }
+    code { font-family: Consolas, "Courier New", monospace; white-space: pre; }
+    .copy-btn { position: absolute; top: 6px; right: 6px; padding: 3px 10px; font-size: 12px; background: #fff; border: 1px solid #bbb; border-radius: 3px; cursor: pointer; color: #333; }
+    .copy-btn:hover { background: #eee; }
+    .copy-btn.copied { color: #2a7a2a; border-color: #2a7a2a; background: #efffef; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>NLP Practical Reference</h1>
+    <p>10 NLP practical codes — click Copy to copy any block to clipboard.</p>
+  </header>
+
+  <main class="grid">
+
+    <!-- Card 1 -->
+    <div class="card">
+      <h2 class="card-title">1. Text Preprocessing Techniques</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+
+nltk.download('punkt_tab')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+text = "NLP helps computers understand language."
+
+# Tokenization
+tokens = word_tokenize(text)
+
+# Stop-word removal
+stop_words = set(stopwords.words('english'))
+filtered = [word for word in tokens if word.lower() not in stop_words]
+
+# Stemming
+stemmer = PorterStemmer()
+stemmed = [stemmer.stem(word) for word in filtered]
+
+# Lemmatization
+lemmatizer = WordNetLemmatizer()
+lemmatized = [lemmatizer.lemmatize(word) for word in filtered]
+
+print("Tokens:", tokens)
+print("Filtered:", filtered)
+print("Stemmed:", stemmed)
+print("Lemmatized:", lemmatized)</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <h2 class="card-title">2. Word Frequency and Vocabulary Analysis</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">import nltk
+from nltk.tokenize import word_tokenize
+from nltk.probability import FreqDist
+
+nltk.download('punkt')
+
+text = "Natural language processing helps computers understand language"
+tokens = word_tokenize(text)
+freq = FreqDist(tokens)
+
+print("Word Frequencies:", freq)
+print("Most Common Words:", freq.most_common(5))
+print("Vocabulary Size:", len(freq))</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <h2 class="card-title">3. Text Vectorization Techniques (BoW and TF-IDF)</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+
+corpus = ["NLP is fun", "NLP is useful"]
+
+# Bag of Words
+bow = CountVectorizer()
+bow_matrix = bow.fit_transform(corpus)
+print("BoW Features:", bow.get_feature_names_out())
+print(bow_matrix.toarray())
+
+# TF-IDF
+tfidf = TfidfVectorizer()
+tfidf_matrix = tfidf.fit_transform(corpus)
+print("TF-IDF Features:", tfidf.get_feature_names_out())
+print(tfidf_matrix.toarray())</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <h2 class="card-title">4. Parts Of Speech (POS) Tagging</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">import nltk
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
+
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger_eng')
+
+sentence = "NLP helps computers understand language"
+tokens = word_tokenize(sentence)
+tags = pos_tag(tokens)
+
+print("POS Tags:", tags)</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+      <h2 class="card-title">5. Named Entity Recognition (NER)</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">import nltk
+from nltk import word_tokenize, pos_tag, ne_chunk
+from nltk.tree import Tree
+
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('maxent_ne_chunker_tab')
+nltk.download('words')
+
+text = "Google was founded by Larry Page in California."
+tokens = word_tokenize(text)
+pos_tags = pos_tag(tokens)
+ner_tree = ne_chunk(pos_tags)
+
+print("Named Entities:")
+for subtree in ner_tree:
+    if isinstance(subtree, Tree):
+        entity = " ".join([word for word, tag in subtree.leaves()])
+        label = subtree.label()
+        print(entity, "->", label)</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card">
+      <h2 class="card-title">6. Text Classification using Machine Learning</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+texts = ["Win money now", "Limited offer", "Call me today", "Lets meet tomorrow"]
+labels = ["spam", "spam", "ham", "ham"]
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(texts)
+
+model = MultinomialNB()
+model.fit(X, labels)
+
+sample = ["Free money offer"]
+sample_vector = vectorizer.transform(sample)
+prediction = model.predict(sample_vector)
+
+print("Message:", sample[0])
+print("Prediction:", prediction[0])</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card">
+      <h2 class="card-title">7. Sentiment Analysis</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">from textblob import TextBlob
+
+reviews = ["I love this product", "This product is bad", "The product is okay"]
+
+for review in reviews:
+    blob = TextBlob(review)
+    polarity = blob.sentiment.polarity
+    if polarity > 0:
+        sentiment = "Positive"
+    elif polarity < 0:
+        sentiment = "Negative"
+    else:
+        sentiment = "Neutral"
+    print("Review:", review)
+    print("Sentiment:", sentiment)
+    print("Polarity:", polarity)
+    print()</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card">
+      <h2 class="card-title">8. Rule-Based Chatbot</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">import re
+import random
+
+patterns = {
+    r'hi|hello|hey': ["Hello!", "Hi there!"],
+    r'how are you': ["I am fine!", "I am doing well."],
+    r'bye|exit': ["Goodbye!", "See you soon!"]
+}
+
+def chatbot_response(user_input):
+    user_input = user_input.lower()
+    for pattern, responses in patterns.items():
+        if re.search(pattern, user_input):
+            return random.choice(responses)
+    return "Sorry, I don't understand."
+
+while True:
+    user_input = input("You: ")
+    if re.search(r'\b(bye|exit)\b', user_input.lower()):
+        print("Bot:", chatbot_response(user_input))
+        break
+    print("Bot:", chatbot_response(user_input))</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="card">
+      <h2 class="card-title">9. BFS and DFS for Problem Solving</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">from collections import deque
+
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D'],
+    'C': ['E'],
+    'D': [],
+    'E': []
+}
+
+# BFS
+def bfs(start):
+    visited = []
+    queue = deque([start])
+    while queue:
+        node = queue.popleft()
+        if node not in visited:
+            print(node, end=" ")
+            visited.append(node)
+            queue.extend(graph[node])
+
+print("BFS Traversal:")
+bfs('A')
+
+# DFS
+visited = []
+def dfs(node):
+    if node not in visited:
+        print(node, end=" ")
+        visited.append(node)
+        for neighbour in graph[node]:
+            dfs(neighbour)
+
+print("\nDFS Traversal:")
+dfs('A')</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- Card 10 -->
+    <div class="card">
+      <h2 class="card-title">10. Best-First Search and A* Search Algorithm</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">import heapq
+
+graph = {
+    'A': {'B': 1, 'C': 3},
+    'B': {'D': 3, 'E': 1},
+    'C': {'F': 5},
+    'D': {},
+    'E': {'F': 2},
+    'F': {}
+}
+h = {'A': 5, 'B': 4, 'C': 2, 'D': 3, 'E': 1, 'F': 0}
+
+# A* Search
+def a_star(start, goal):
+    pq = [(h[start], 0, start, [start])]
+    visited = set()
+    while pq:
+        f, g, node, path = heapq.heappop(pq)
+        if node == goal:
+            return path, g
+        if node not in visited:
+            visited.add(node)
+            for n, cost in graph[node].items():
+                g_new = g + cost
+                f_new = g_new + h[n]
+                heapq.heappush(pq, (f_new, g_new, n, path + [n]))
+
+path, cost = a_star('A', 'F')
+print("A* Path:", path)
+print("A* Cost:", cost)
+
+# Best-First Search
+heuristic = {'A': 5, 'B': 4, 'C': 2, 'D': 3, 'E': 1, 'F': 0}
+graph2 = {'A': ['B', 'C'], 'B': ['D', 'E'], 'C': ['F'], 'D': [], 'E': ['F'], 'F': []}
+
+def best_first_search(start, goal):
+    visited = set()
+    queue = []
+    path = []
+    heapq.heappush(queue, (heuristic[start], start))
+    while queue:
+        h_val, node = heapq.heappop(queue)
+        if node not in visited:
+            path.append(node)
+            visited.add(node)
+            if node == goal:
+                break
+            for neighbor in graph2[node]:
+                if neighbor not in visited:
+                    heapq.heappush(queue, (heuristic[neighbor], neighbor))
+    return path
+
+print("\nBest-First Search Path:")
+print(best_first_search('A', 'F'))</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    async function copyCode(btn) {
+      const code = btn.parentElement.querySelector('code');
+      const text = code.innerText;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(function () {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      } catch (err) {
+        // Clipboard API unavailable — fail silently
+      }
+    }
+  </script>
+
+</body>
+</html>
