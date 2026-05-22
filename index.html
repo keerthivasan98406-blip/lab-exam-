@@ -89,29 +89,6 @@ print("Vocabulary Size:", len(freq))</code></pre>
       </div>
     </div>
 
-    <!-- Card 3 -->
-    <div class="card">
-      <h2 class="card-title">3. Text Vectorization Techniques (BoW and TF-IDF)</h2>
-      <div class="code-wrapper">
-        <pre><code class="code-block">from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-
-corpus = ["NLP is fun", "NLP is useful"]
-
-# Bag of Words
-bow = CountVectorizer()
-bow_matrix = bow.fit_transform(corpus)
-print("BoW Features:", bow.get_feature_names_out())
-print(bow_matrix.toarray())
-
-# TF-IDF
-tfidf = TfidfVectorizer()
-tfidf_matrix = tfidf.fit_transform(corpus)
-print("TF-IDF Features:", tfidf.get_feature_names_out())
-print(tfidf_matrix.toarray())</code></pre>
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-      </div>
-    </div>
-
     <!-- Card 4 -->
     <div class="card">
       <h2 class="card-title">4. Parts Of Speech (POS) Tagging</h2>
@@ -211,39 +188,9 @@ for review in reviews:
       </div>
     </div>
 
-    <!-- Card 8 -->
-    <div class="card">
-      <h2 class="card-title">8. Rule-Based Chatbot</h2>
-      <div class="code-wrapper">
-        <pre><code class="code-block">import re
-import random
-
-patterns = {
-    r'hi|hello|hey': ["Hello!", "Hi there!"],
-    r'how are you': ["I am fine!", "I am doing well."],
-    r'bye|exit': ["Goodbye!", "See you soon!"]
-}
-
-def chatbot_response(user_input):
-    user_input = user_input.lower()
-    for pattern, responses in patterns.items():
-        if re.search(pattern, user_input):
-            return random.choice(responses)
-    return "Sorry, I don't understand."
-
-while True:
-    user_input = input("You: ")
-    if re.search(r'\b(bye|exit)\b', user_input.lower()):
-        print("Bot:", chatbot_response(user_input))
-        break
-    print("Bot:", chatbot_response(user_input))</code></pre>
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-      </div>
-    </div>
-
     <!-- Card 9 -->
     <div class="card">
-      <h2 class="card-title">9. BFS and DFS for Problem Solving</h2>
+      <h2 class="card-title">9.(i) Breadth First Search (BFS)</h2>
       <div class="code-wrapper">
         <pre><code class="code-block">from collections import deque
 
@@ -255,7 +202,6 @@ graph = {
     'E': []
 }
 
-# BFS
 def bfs(start):
     visited = []
     queue = deque([start])
@@ -267,10 +213,25 @@ def bfs(start):
             queue.extend(graph[node])
 
 print("BFS Traversal:")
-bfs('A')
+bfs('A')</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
 
-# DFS
+    <!-- Card 9b -->
+    <div class="card">
+      <h2 class="card-title">9.(ii) DFS for Problem Solving</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">graph = {
+    'A': ['B', 'C'],
+    'B': ['D'],
+    'C': ['E'],
+    'D': [],
+    'E': []
+}
+
 visited = []
+
 def dfs(node):
     if node not in visited:
         print(node, end=" ")
@@ -278,7 +239,7 @@ def dfs(node):
         for neighbour in graph[node]:
             dfs(neighbour)
 
-print("\nDFS Traversal:")
+print("DFS Traversal:")
 dfs('A')</code></pre>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
@@ -286,42 +247,12 @@ dfs('A')</code></pre>
 
     <!-- Card 10 -->
     <div class="card">
-      <h2 class="card-title">10. Best-First Search and A* Search Algorithm</h2>
+      <h2 class="card-title">10.(i) Best-First Search (Heuristic-Based Search)</h2>
       <div class="code-wrapper">
         <pre><code class="code-block">import heapq
 
-graph = {
-    'A': {'B': 1, 'C': 3},
-    'B': {'D': 3, 'E': 1},
-    'C': {'F': 5},
-    'D': {},
-    'E': {'F': 2},
-    'F': {}
-}
-h = {'A': 5, 'B': 4, 'C': 2, 'D': 3, 'E': 1, 'F': 0}
-
-# A* Search
-def a_star(start, goal):
-    pq = [(h[start], 0, start, [start])]
-    visited = set()
-    while pq:
-        f, g, node, path = heapq.heappop(pq)
-        if node == goal:
-            return path, g
-        if node not in visited:
-            visited.add(node)
-            for n, cost in graph[node].items():
-                g_new = g + cost
-                f_new = g_new + h[n]
-                heapq.heappush(pq, (f_new, g_new, n, path + [n]))
-
-path, cost = a_star('A', 'F')
-print("A* Path:", path)
-print("A* Cost:", cost)
-
-# Best-First Search
 heuristic = {'A': 5, 'B': 4, 'C': 2, 'D': 3, 'E': 1, 'F': 0}
-graph2 = {'A': ['B', 'C'], 'B': ['D', 'E'], 'C': ['F'], 'D': [], 'E': ['F'], 'F': []}
+graph = {'A': ['B', 'C'], 'B': ['D', 'E'], 'C': ['F'], 'D': [], 'E': ['F'], 'F': []}
 
 def best_first_search(start, goal):
     visited = set()
@@ -335,12 +266,44 @@ def best_first_search(start, goal):
             visited.add(node)
             if node == goal:
                 break
-            for neighbor in graph2[node]:
+            for neighbor in graph[node]:
                 if neighbor not in visited:
                     heapq.heappush(queue, (heuristic[neighbor], neighbor))
     return path
 
-print("\nBest-First Search Path:")
+print("Best-First Search Path:")
+print(best_first_search('A', 'F'))</code></pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- Card 11 -->
+    <div class="card">
+      <h2 class="card-title">10.(ii) A* Search Algorithm</h2>
+      <div class="code-wrapper">
+        <pre><code class="code-block">import heapq
+
+heuristic = {'A': 5, 'B': 4, 'C': 2, 'D': 3, 'E': 1, 'F': 0}
+graph = {'A': ['B', 'C'], 'B': ['D', 'E'], 'C': ['F'], 'D': [], 'E': ['F'], 'F': []}
+
+def best_first_search(start, goal):
+    visited = set()
+    queue = []
+    path = []
+    heapq.heappush(queue, (heuristic[start], start))
+    while queue:
+        h, node = heapq.heappop(queue)
+        if node not in visited:
+            path.append(node)
+            visited.add(node)
+            if node == goal:
+                break
+            for neighbor in graph[node]:
+                if neighbor not in visited:
+                    heapq.heappush(queue, (heuristic[neighbor], neighbor))
+    return path
+
+print("Best-First Search Path:")
 print(best_first_search('A', 'F'))</code></pre>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
